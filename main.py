@@ -17,29 +17,22 @@ from functools import wraps
 # print(say_hi())        
 
 
-# my_number = ‘+996700123456’
-# Далее создайте переменную 
-# my_number_hidden и зашифруйте 
-# переменную my_number так, чтобы 
-# остались только последние 2 числа, 
-# а остальные все были заменены на символ # например
-# ‘###########56’
 
 
 
-def change_phone_number(phone_number):
-    number = list(phone_number)
-    for i in range(len(number)-2):
-        number[i] = '#'
+# def change_phone_number(phone_number):
+#     number = list(phone_number)
+#     for i in range(len(number)-2):
+#         number[i] = '#'
 
-    return number
+#     return number
 
-phone_number = '+996700123456'
+# my_number = '+996700123456'
 
-number = change_phone_number(phone_number)
+# number = change_phone_number(my_number)
 
-for n in range(len(number)):
-    print(f'{number[n]}', end='')
+# for n in range(len(number)):
+#     print(f'{number[n]}', end='')
 
 
 
@@ -60,24 +53,25 @@ for n in range(len(number)):
 # print(change_number_to_sharp(my_number))
 
 
-# def change_phone_number(func):
-#     @wraps(func)
-#     def wrapper():
-#         number = func()
-#         result = ''
-#         for i in range(len(list(number))-2):
+def change_phone_number(func):
+    @wraps(func)
+    def wrapper():
+        number = func()
+        result = ''
+        for i in range(len(number)-2):
 
-#             result += '#'
+            result += '#'
 
-#         result += number[-2:] 
+        result += number[-2:] 
 
-#         return result
-#     return wrapper    
+        return result
+    return wrapper    
 
-# phone_number = '+996700123456'
 
-# @change_phone_number
-# def get_number(number):
-#     return number
+@change_phone_number
+def get_number():
+    phone_number = '+996700123456'
+    return phone_number
 
-# print(get_number(phone_number))    
+print(get_number())
+ 
